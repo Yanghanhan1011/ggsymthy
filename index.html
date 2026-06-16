@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -25,7 +24,6 @@
             position: relative;
         }
 
-        /* 嫩粉蓝半透遮罩 */
         body::before {
             content: "";
             position: fixed;
@@ -43,7 +41,6 @@
             margin: 0 auto;
         }
 
-        /* 页头 */
         .hero {
             text-align: center;
             margin-bottom: 2.5rem;
@@ -78,7 +75,6 @@
             backdrop-filter: blur(4px);
         }
 
-        /* 三列网格 */
         .dashboard {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -86,7 +82,6 @@
             margin-top: 1rem;
         }
 
-        /* 卡片 */
         .card {
             background: rgba(255, 250, 245, 0.85);
             backdrop-filter: blur(12px);
@@ -127,81 +122,8 @@
             font-size: 2rem;
         }
 
-        /* 插入区域 */
-        .insert-area {
-            background: rgba(241, 245, 255, 0.7);
-            border-radius: 28px;
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid #ffe0ef;
-        }
-
-        .input-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
-        .input-group input,
-        .input-group .file-input-sim {
-            flex: 1 1 140px;
-            padding: 12px 16px;
-            border: none;
-            border-radius: 48px;
-            background: white;
-            font-size: 0.9rem;
-            outline: none;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-            transition: 0.2s;
-            border: 1px solid #ffd9e8;
-            min-width: 100px;
-        }
-
-        .input-group input:focus {
-            border-color: #7DC4FF;
-            box-shadow: 0 0 0 3px rgba(125, 196, 255, 0.2);
-        }
-
-        .btn {
-            background: linear-gradient(120deg, #FFB7D2, #9AC9FF);
-            border: none;
-            padding: 0 20px;
-            border-radius: 48px;
-            font-weight: 600;
-            color: #2c3e5c;
-            cursor: pointer;
-            transition: 0.2s;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-            white-space: nowrap;
-        }
-
-        .btn-sm {
-            padding: 6px 14px;
-            font-size: 0.75rem;
-            background: #ffeef4;
-            color: #b95d86;
-            box-shadow: none;
-        }
-
-        .btn-sm:hover {
-            background: #ffdeea;
-            color: #a1446b;
-        }
-
-        .btn:hover {
-            transform: scale(0.97);
-            background: linear-gradient(120deg, #ffa6c7, #87bbff);
-            color: #1f2f44;
-        }
-
-        /* 列表 */
         .list-container {
-            max-height: 380px;
+            max-height: 450px;
             overflow-y: auto;
             padding-right: 6px;
         }
@@ -286,37 +208,12 @@
             word-break: break-all;
         }
 
-        .delete-btn {
-            background: none;
-            border: none;
-            color: #ff8dae;
-            cursor: pointer;
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 4px 10px;
-            border-radius: 30px;
-            transition: 0.1s;
-            flex-shrink: 0;
-        }
-
-        .delete-btn:hover {
-            background: #ffeef4;
-            color: #e64980;
-        }
-
         .empty-msg {
             text-align: center;
             color: #c49ab0;
             padding: 20px;
             font-style: italic;
             font-size: 0.8rem;
-        }
-
-        .note-text {
-            font-size: 0.7rem;
-            color: #a5718b;
-            margin-top: 5px;
-            padding-left: 8px;
         }
 
         footer {
@@ -350,99 +247,79 @@
     <div class="container">
         <div class="hero">
             <h1>⚔️ 世界刻薄榜前3 ⚔️</h1>
-            
         </div>
 
         <div class="dashboard">
-            <!-- ========== 微博板块 ========== -->
-            <div class="card" id="weiboCard">
+            <!-- 微博板块 -->
+            <div class="card">
                 <div class="card-header">
                     <span class="icon-badge">🐦‍⬛</span>
                     <h2>微博</h2>
                 </div>
-                <div class="insert-area">
-                    <div class="input-group">
-                        <input type="text" id="weiboNameInput" placeholder="人物名称 (如: 张美丽)" />
-                        <input type="text" id="weiboLinkInput" placeholder="微博链接 (如: https://weibo.com/u/...)" />
-                    </div>
-                    <div class="input-group">
-                        <button class="btn" id="addWeiboBtn">➕ 植入链接</button>
-                    </div>
-                    
-                </div>
                 <div class="list-container" id="weiboList"></div>
             </div>
 
-            <!-- ========== 抖音板块 ========== -->
-            <div class="card" id="douyinCard">
+            <!-- 抖音 + 小红书板块 -->
+            <div class="card">
                 <div class="card-header">
                     <span class="icon-badge">🎵</span>
-                    <h2>抖音</h2>
-                </div>
-                <div class="insert-area">
-                    <div class="input-group">
-                        <input type="text" id="douyinNameInput" placeholder="人物名称 (如: 李刻薄)" />
-                        <input type="text" id="douyinLinkInput" placeholder="抖音主页链接 (如: https://www.douyin.com/user/...)" />
-                    </div>
-                    <div class="input-group">
-                        <button class="btn" id="addDouyinBtn">🎬 植入链接</button>
-                    </div>
-                   
+                    <h2>抖音，小红书</h2>
                 </div>
                 <div class="list-container" id="douyinList"></div>
             </div>
 
-            <!-- ========== 截屏记录板块 ========== -->
-            <div class="card" id="screenshotCard">
+            <!-- 其他板块（截屏记录） -->
+            <div class="card">
                 <div class="card-header">
                     <span class="icon-badge">📸</span>
-                    <h2>截屏记录</h2>
-                </div>
-                <div class="insert-area">
-                    <div class="input-group">
-                        <input type="text" id="screenshotNameInput" placeholder="人物名称 (必填)" />
-                        <input type="text" id="screenshotSocialLink" placeholder="相关人社交媒体链接 (必填)" />
-                    </div>
-                    <div class="input-group">
-                        <input type="text" id="screenshotImgUrl" placeholder="截图图片URL (可选)" />
-                        <input type="text" id="screenshotRemark" placeholder="备注/时间戳 (可选)" />
-                    </div>
-                    <div class="input-group">
-                        <button class="btn" id="addScreenshotBtn">📷 存储截屏记录</button>
-                    </div>
-                   
+                    <h2>其他</h2>
                 </div>
                 <div class="list-container" id="screenshotList"></div>
             </div>
         </div>
-
-        
     </div>
 
     <script>
-        // ---------- 存储KEY ----------
-        const STORAGE_KEYS = {
-            WEIBO: "meanGirls_weiboLinks",
-            DOUYIN: "meanGirls_douyinLinks",
-            SCREENSHOT: "meanGirls_screenshotRecords"
-        };
+        // ================================================================
+        // ★★★ 在这里手动编辑您的所有数据（完全静态，无任何上传功能） ★★★
+        // ================================================================
 
-        // ---------- 数据模型 (对象数组) ----------
-        let weiboLinks = [];          // 元素: { name, link }
-        let douyinLinks = [];         // 元素: { name, link }
-        let screenshotRecords = [];   // 元素: { name, socialLink, imgUrl, remark, id, timestamp }
+        // 微博数据
+        const WEIBO_DATA = [
+            { name: '小方块', link: 'https://weibo.com/u/6317334286' },
+            { name: '小方块2', link: 'https://m.weibo.cn/u/7912713088?wm=3333_2001&from=10G6193010&sourcetype=weixin&s_trans=ooVVStUv99BzgusraXoKIg%3D%3D__s&s_channel=4' },
+            { name: 'gqy', link: 'https://weibo.com/u/6581348518' },
+            { name: 'ttx', link: 'https://weibo.com/u/7856889699' },
+        ];
 
-        // ---------- 辅助函数 ----------
-        function sanitizeUrl(url) {
-            if (!url) return "";
-            url = url.trim();
-            if (!url.startsWith('http://') && !url.startsWith('https://')) {
-                return 'https://' + url;
-            }
-            return url;
-        }
+        // 抖音 + 小红书数据
+        const DOUYIN_DATA = [
+            { name: 'lyl小红书', link: 'https://www.xiaohongshu.com/user/profile/5cbd5ca40000000017000dce?xsec_token=ABdqsNSB8prkCsPEX9V0lx_JyCDcQjjJjOnRMq0l2-1qk%3D&xsec_source=pc_search' },
+            { name: 'lzx小红书', link: 'https://www.douyin.com/user/MS4wLjABAAAAf4example' },
+            { name: 'czc抖音小号账号', link: 'https://cxihuanbaishanch/' },
+            { name: '小方块ins账号名', link: 'https://w_o31i/' },
+        ];
 
-        // 简单转义
+        // 截屏记录数据（已修正空值写法）
+        const SCREENSHOT_DATA = [
+            {
+                name: 'tpy天上飞',
+                socialLink: 'https://v.douyin.com/r3PzUA_QlvE/',
+                imgUrl: '',
+                remark: ''
+            },
+            {
+                name: '长梅成绩单',
+                socialLink: 'https://www.douyin.com/user/xxxx888',
+                imgUrl: 'https://picsum.photos/id/26/100/100',
+                remark: '阴阳怪气名场面'
+            },
+        ];
+
+        // ================================================================
+        // 以下为渲染代码，您无需修改
+        // ================================================================
+
         function escapeHtml(str) {
             if (!str) return '';
             return str.replace(/[&<>]/g, function(m) {
@@ -453,17 +330,25 @@
             });
         }
 
-        // ========== 渲染函数 ==========
+        function sanitizeUrl(url) {
+            if (!url) return "";
+            url = url.trim();
+            if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                return 'https://' + url;
+            }
+            return url;
+        }
+
         function renderWeibo() {
             const container = document.getElementById('weiboList');
             if (!container) return;
-            if (weiboLinks.length === 0) {
-                container.innerHTML = `<div class="empty-msg">🐣 暂无窥视目标，请在上方添加姓名 + 链接</div>`;
+            if (WEIBO_DATA.length === 0) {
+                container.innerHTML = `<div class="empty-msg">🐣 暂无微博目标</div>`;
                 return;
             }
             let html = '';
-            weiboLinks.forEach((item, idx) => {
-                const name = item.name ? escapeHtml(item.name) : '未命名';
+            WEIBO_DATA.forEach(item => {
+                const name = escapeHtml(item.name) || '未命名';
                 const link = item.link || '';
                 const safeLink = sanitizeUrl(link);
                 const displayLink = link.length > 40 ? link.substring(0, 37) + '...' : link;
@@ -475,34 +360,22 @@
                                 <a href="${safeLink}" target="_blank" rel="noopener noreferrer">📱 ${displayLink}</a>
                             </div>
                         </div>
-                        <button class="delete-btn" data-idx="${idx}" data-type="weibo">✖️</button>
                     </div>
                 `;
             });
             container.innerHTML = html;
-            // 绑定删除
-            container.querySelectorAll('.delete-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const idx = parseInt(btn.getAttribute('data-idx'));
-                    if (!isNaN(idx)) {
-                        weiboLinks.splice(idx, 1);
-                        saveWeiboToLocal();
-                        renderWeibo();
-                    }
-                });
-            });
         }
 
         function renderDouyin() {
             const container = document.getElementById('douyinList');
             if (!container) return;
-            if (douyinLinks.length === 0) {
-                container.innerHTML = `<div class="empty-msg">🎭 暂无抖音目标，添加上方姓名 + 链接</div>`;
+            if (DOUYIN_DATA.length === 0) {
+                container.innerHTML = `<div class="empty-msg">🎭 暂无目标</div>`;
                 return;
             }
             let html = '';
-            douyinLinks.forEach((item, idx) => {
-                const name = item.name ? escapeHtml(item.name) : '未命名';
+            DOUYIN_DATA.forEach(item => {
+                const name = escapeHtml(item.name) || '未命名';
                 const link = item.link || '';
                 const safeLink = sanitizeUrl(link);
                 const displayLink = link.length > 40 ? link.substring(0, 37) + '...' : link;
@@ -514,39 +387,27 @@
                                 <a href="${safeLink}" target="_blank" rel="noopener noreferrer">🎥 ${displayLink}</a>
                             </div>
                         </div>
-                        <button class="delete-btn" data-idx="${idx}" data-type="douyin">✖️</button>
                     </div>
                 `;
             });
             container.innerHTML = html;
-            container.querySelectorAll('.delete-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const idx = parseInt(btn.getAttribute('data-idx'));
-                    if (!isNaN(idx)) {
-                        douyinLinks.splice(idx, 1);
-                        saveDouyinToLocal();
-                        renderDouyin();
-                    }
-                });
-            });
         }
 
         function renderScreenshot() {
             const container = document.getElementById('screenshotList');
             if (!container) return;
-            if (screenshotRecords.length === 0) {
-                container.innerHTML = `<div class="empty-msg">📭 暂无截屏记录，添加姓名 + 链接 + 截图URL</div>`;
+            if (SCREENSHOT_DATA.length === 0) {
+                container.innerHTML = `<div class="empty-msg">📭 暂无记录</div>`;
                 return;
             }
             let html = '';
-            screenshotRecords.forEach((record, idx) => {
-                const name = record.name ? escapeHtml(record.name) : '未命名';
+            SCREENSHOT_DATA.forEach(record => {
+                const name = escapeHtml(record.name) || '未命名';
                 const socialLink = record.socialLink || '';
                 const safeLink = sanitizeUrl(socialLink);
                 const displayLink = socialLink.length > 40 ? socialLink.substring(0, 37) + '...' : socialLink;
                 const imgUrl = record.imgUrl ? record.imgUrl.trim() : '';
                 const remarkText = record.remark ? escapeHtml(record.remark) : '无备注';
-                const timeText = record.timestamp ? new Date(record.timestamp).toLocaleString() : '';
 
                 html += `
                     <div class="record-item" style="flex-direction: column; align-items: flex-start;">
@@ -557,260 +418,22 @@
                                     <a href="${safeLink}" target="_blank" rel="noopener noreferrer">🔗 ${displayLink}</a>
                                 </div>
                             </div>
-                            <button class="delete-btn" data-idx="${idx}" data-type="screenshot">✖️</button>
                         </div>
                         <div class="screenshot-preview">
                             ${imgUrl ? `<img class="screenshot-img" src="${imgUrl}" alt="截屏证据" onerror="this.onerror=null;this.src='https://via.placeholder.com/48x48?text=图片失效';" loading="lazy">` : `<div class="screenshot-img" style="background:#efdbeb; display:flex; align-items:center; justify-content:center; font-size:10px;">无图</div>`}
-                            <div class="record-meta">📝 ${remarkText}<br>🕒 ${timeText || '刚刚'}</div>
+                            <div class="record-meta">📝 ${remarkText}</div>
                         </div>
                     </div>
                 `;
             });
             container.innerHTML = html;
-            container.querySelectorAll('.delete-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const idx = parseInt(btn.getAttribute('data-idx'));
-                    if (!isNaN(idx)) {
-                        screenshotRecords.splice(idx, 1);
-                        saveScreenshotToLocal();
-                        renderScreenshot();
-                    }
-                });
-            });
         }
 
-        // ========== 本地存储 ==========
-        function saveWeiboToLocal() {
-            localStorage.setItem(STORAGE_KEYS.WEIBO, JSON.stringify(weiboLinks));
-        }
-        function saveDouyinToLocal() {
-            localStorage.setItem(STORAGE_KEYS.DOUYIN, JSON.stringify(douyinLinks));
-        }
-        function saveScreenshotToLocal() {
-            localStorage.setItem(STORAGE_KEYS.SCREENSHOT, JSON.stringify(screenshotRecords));
-        }
+        renderWeibo();
+        renderDouyin();
+        renderScreenshot();
 
-        // ========== 加载数据（兼容旧格式） ==========
-        function loadData() {
-            // 微博
-            let storedWeibo = localStorage.getItem(STORAGE_KEYS.WEIBO);
-            if (storedWeibo) {
-                try {
-                    const parsed = JSON.parse(storedWeibo);
-                    if (Array.isArray(parsed)) {
-                        weiboLinks = parsed.map(item => {
-                            // 如果是字符串 (旧格式) 转为对象
-                            if (typeof item === 'string') {
-                                return { name: '', link: item };
-                            }
-                            // 如果是对象但缺少 name 或 link
-                            return { name: item.name || '', link: item.link || '' };
-                        });
-                    } else {
-                        weiboLinks = [];
-                    }
-                } catch (e) { weiboLinks = []; }
-            } else {
-                weiboLinks = [];
-            }
-
-            // 抖音
-            let storedDouyin = localStorage.getItem(STORAGE_KEYS.DOUYIN);
-            if (storedDouyin) {
-                try {
-                    const parsed = JSON.parse(storedDouyin);
-                    if (Array.isArray(parsed)) {
-                        douyinLinks = parsed.map(item => {
-                            if (typeof item === 'string') {
-                                return { name: '', link: item };
-                            }
-                            return { name: item.name || '', link: item.link || '' };
-                        });
-                    } else {
-                        douyinLinks = [];
-                    }
-                } catch (e) { douyinLinks = []; }
-            } else {
-                douyinLinks = [];
-            }
-
-            // 截屏记录
-            let storedScreenshot = localStorage.getItem(STORAGE_KEYS.SCREENSHOT);
-            if (storedScreenshot) {
-                try {
-                    const parsed = JSON.parse(storedScreenshot);
-                    if (Array.isArray(parsed)) {
-                        screenshotRecords = parsed.map(item => {
-                            // 旧版可能没有 name 字段
-                            return {
-                                name: item.name || '',
-                                socialLink: item.socialLink || item.link || '',
-                                imgUrl: item.imgUrl || '',
-                                remark: item.remark || '',
-                                id: item.id || Date.now() + Math.random(),
-                                timestamp: item.timestamp || Date.now()
-                            };
-                        });
-                    } else {
-                        screenshotRecords = [];
-                    }
-                } catch (e) { screenshotRecords = []; }
-            } else {
-                screenshotRecords = [];
-            }
-        }
-
-        // ========== 添加逻辑 ==========
-        function addWeiboLink() {
-            const nameInput = document.getElementById('weiboNameInput');
-            const linkInput = document.getElementById('weiboLinkInput');
-            const name = nameInput.value.trim();
-            let link = linkInput.value.trim();
-            if (link === '') {
-                alert('请输入微博链接！');
-                return;
-            }
-            if (name === '') {
-                alert('请输入人物名称（如：张三）');
-                return;
-            }
-            weiboLinks.push({ name, link });
-            saveWeiboToLocal();
-            renderWeibo();
-            nameInput.value = '';
-            linkInput.value = '';
-            nameInput.focus();
-        }
-
-        function addDouyinLink() {
-            const nameInput = document.getElementById('douyinNameInput');
-            const linkInput = document.getElementById('douyinLinkInput');
-            const name = nameInput.value.trim();
-            let link = linkInput.value.trim();
-            if (link === '') {
-                alert('请输入抖音链接！');
-                return;
-            }
-            if (name === '') {
-                alert('请输入人物名称！');
-                return;
-            }
-            douyinLinks.push({ name, link });
-            saveDouyinToLocal();
-            renderDouyin();
-            nameInput.value = '';
-            linkInput.value = '';
-            nameInput.focus();
-        }
-
-        function addScreenshotRecord() {
-            const nameInput = document.getElementById('screenshotNameInput');
-            const socialInput = document.getElementById('screenshotSocialLink');
-            const imgUrlInput = document.getElementById('screenshotImgUrl');
-            const remarkInput = document.getElementById('screenshotRemark');
-
-            const name = nameInput.value.trim();
-            const socialLink = socialInput.value.trim();
-            if (name === '') {
-                alert('截屏记录必须填写人物名称！');
-                return;
-            }
-            if (socialLink === '') {
-                alert('截屏记录必须填写社交媒体链接！');
-                return;
-            }
-            let imgUrl = imgUrlInput.value.trim();
-            let remark = remarkInput.value.trim();
-
-            const newRecord = {
-                name: name,
-                socialLink: socialLink,
-                imgUrl: imgUrl || '',
-                remark: remark || '',
-                id: Date.now() + Math.random() * 10000,
-                timestamp: Date.now()
-            };
-            screenshotRecords.unshift(newRecord);
-            saveScreenshotToLocal();
-            renderScreenshot();
-            // 清空
-            nameInput.value = '';
-            socialInput.value = '';
-            imgUrlInput.value = '';
-            remarkInput.value = '';
-            nameInput.focus();
-        }
-
-        // ========== 初始化演示数据（带姓名） ==========
-        function initDemoDataIfEmpty() {
-            if (weiboLinks.length === 0) {
-                weiboLinks.push({ name: '张美丽', link: 'https://weibo.com/u/5841234567' });
-                weiboLinks.push({ name: '王刻薄', link: 'https://weibo.com/u/7701234567' });
-                saveWeiboToLocal();
-            }
-            if (douyinLinks.length === 0) {
-                douyinLinks.push({ name: '李阴阳', link: 'https://www.douyin.com/user/MS4wLjABAAAA123Demo' });
-                douyinLinks.push({ name: '赵怼怼', link: 'https://www.douyin.com/user/MS4wLjABAAAAf4example' });
-                saveDouyinToLocal();
-            }
-            if (screenshotRecords.length === 0) {
-                screenshotRecords.push({
-                    name: '孙绿茶',
-                    socialLink: 'https://weibo.com/u/6666777888',
-                    imgUrl: 'https://picsum.photos/id/20/100/100',
-                    remark: '刻薄言论截图证据 #1',
-                    id: Date.now() + 1,
-                    timestamp: Date.now() - 86400000
-                });
-                screenshotRecords.push({
-                    name: '周阴阳师',
-                    socialLink: 'https://www.douyin.com/user/xxxx666',
-                    imgUrl: 'https://picsum.photos/id/26/100/100',
-                    remark: '抖音阴阳怪气名场面',
-                    id: Date.now() + 2,
-                    timestamp: Date.now() - 172800000
-                });
-                saveScreenshotToLocal();
-            }
-            renderWeibo();
-            renderDouyin();
-            renderScreenshot();
-        }
-
-        // ========== 绑定事件 ==========
-        function bindEvents() {
-            document.getElementById('addWeiboBtn').addEventListener('click', addWeiboLink);
-            document.getElementById('addDouyinBtn').addEventListener('click', addDouyinLink);
-            document.getElementById('addScreenshotBtn').addEventListener('click', addScreenshotRecord);
-
-            // 回车快捷
-            document.getElementById('weiboLinkInput').addEventListener('keypress', (e) => { if (e.key === 'Enter') addWeiboLink(); });
-            document.getElementById('weiboNameInput').addEventListener('keypress', (e) => { if (e.key === 'Enter') addWeiboLink(); });
-            document.getElementById('douyinLinkInput').addEventListener('keypress', (e) => { if (e.key === 'Enter') addDouyinLink(); });
-            document.getElementById('douyinNameInput').addEventListener('keypress', (e) => { if (e.key === 'Enter') addDouyinLink(); });
-            document.getElementById('screenshotSocialLink').addEventListener('keypress', (e) => { if (e.key === 'Enter') addScreenshotRecord(); });
-            document.getElementById('screenshotNameInput').addEventListener('keypress', (e) => { if (e.key === 'Enter') addScreenshotRecord(); });
-            document.getElementById('screenshotImgUrl').addEventListener('keypress', (e) => { if (e.key === 'Enter') addScreenshotRecord(); });
-            document.getElementById('screenshotRemark').addEventListener('keypress', (e) => { if (e.key === 'Enter') addScreenshotRecord(); });
-        }
-
-        // ========== 启动 ==========
-        function init() {
-            loadData();
-            bindEvents();
-            // 如果所有数据为空，填充演示数据
-            if (weiboLinks.length === 0 && douyinLinks.length === 0 && screenshotRecords.length === 0) {
-                initDemoDataIfEmpty();
-            } else {
-                renderWeibo();
-                renderDouyin();
-                renderScreenshot();
-            }
-            console.log('%c✨ 背景图片替换：修改 body 的 background-image 即可。人名+链接已就绪！', 'color:#E98DB3;font-size:14px;');
-        }
-        init();
+        console.log('%c✨ 纯静态展示模式 | 所有数据在代码开头的数组中编辑', 'color:#E98DB3;font-size:14px;');
     </script>
 </body>
 </html>
-
-
